@@ -3,12 +3,15 @@ import { Admin } from "@/models/Admin";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import NextAuth, { getServerSession } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import {mongooseConnect} from '@/lib/mongoose';
+
 
 // const adminEmails = ["razmakus@gmail.com"];
 
 
 //Setting admins from Admins pages
 async function isAdminEmail(email) {
+  mongooseConnect();
   //  return true;
   return !! (await Admin.findOne({ email }));
 }
