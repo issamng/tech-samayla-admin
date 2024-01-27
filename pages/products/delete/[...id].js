@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Layout from "@/components/Layout";
 import axios from "axios";
 import { useRouter } from "next/router";
