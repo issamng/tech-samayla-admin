@@ -14,6 +14,8 @@ async function isAdminEmail(email) {
 }
 
 export const authOptions = {
+  //fix vercel server error: adding secret 
+  secret: process.env.GOOGLE_ID,
   providers: [
     // OAuth authentication providers...
 
