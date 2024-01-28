@@ -25,6 +25,7 @@ export const authOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
+      prompt: "select_account",
     }),
   ],
   adapter: MongoDBAdapter(clientPromise),
@@ -33,7 +34,9 @@ export const authOptions = {
       if (await isAdminEmail(session?.user?.email)) {
         return session;
       } else {
-        return false;
+        console.log('erreur, vous nest pas admin');
+        // return false; 
+        
       }
     },
   },
