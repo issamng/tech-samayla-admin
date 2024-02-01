@@ -4,8 +4,8 @@ import { getServerSession } from "next-auth";
 import { authOptions, isAdminRequest } from "./auth/[...nextauth]";
 
 export default async function handle(req, res) {
-  const { method } = req;
   await mongooseConnect();
+  const { method } = req;
   await isAdminRequest(req, res);
 
   if (method === "GET") {

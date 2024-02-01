@@ -3,8 +3,8 @@ import { Product } from "@/models/Product";
 import { isAdminRequest } from "./auth/[...nextauth]";
 
 export default async function handle(req, res) {
-  const { method } = req;
   await mongooseConnect();
+  const { method } = req;
   await isAdminRequest(req, res);
 
   if (method === "GET") {

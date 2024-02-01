@@ -16,15 +16,7 @@ export default function Products() {
   }, []);
   return (
     <>
-      <style>
-        {`
-@media (max-width: 525px) {
-  .btn-default {
-    margin-bottom: .6rem;
-  }
-}
-`}
-      </style>
+ 
 
       <Layout>
         <Link className="btn-primary" href={"/products/new"}>
@@ -53,7 +45,7 @@ export default function Products() {
                 <td>{product.title}</td>
                 <td>
                   <Link
-                    className="btn-default"
+                    className="btn-default mr-1 mb-1 mt-1"
                     href={"/products/edit/" + product._id}
                   >
                     <svg

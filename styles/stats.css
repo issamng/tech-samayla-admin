@@ -3,7 +3,7 @@
 }
 
 .tile{
-    @apply bg-white shadow-md text-center pb-1 ;
+    @apply bg-white shadow-md text-center pb-1 mb-2 ;
 }
 .tile-header{
     @apply uppercase text-gray-500 font-bold text-xs  m-1;
@@ -12,5 +12,5 @@
     @apply text-3xl  font-bold mt-1 text-blue-900 ;
 }
 .tile-desc{
-    @apply text-xs text-gray-400
+    @apply text-xs text-gray-400 ;
 }

@@ -115,15 +115,7 @@ function Categories({ swal }) {
 
   return (
     <>
-        <style>
-        {`
-@media (max-width: 556px) {
-  .btn-default {
-    margin-bottom: .6rem;
-  }
-}
-`}
-</style>
+
     
     <Layout>
       <h1>Catégories</h1>
@@ -243,7 +235,7 @@ function Categories({ swal }) {
                   <td>
                     <button
                       onClick={() => editCategory(category)}
-                      className="btn-default mr-1"
+                      className="btn-default mr-1 mb-1 mt-1"
                     >
                       Modifier
                     </button>

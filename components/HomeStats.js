@@ -53,7 +53,7 @@ export default function HomeStats() {
 
   return (
     <>
-      <h1>Commandes</h1>
+      <h1 className="mb-2">Commandes</h1>
       <div className="tiles-grid">
         <div className="tile">
           <h2 className="tile-header">Aujourd'hui</h2>
@@ -71,7 +71,7 @@ export default function HomeStats() {
           <div className="tile-desc">{ordersThisMonth.length} commandes ce mois</div>
         </div>
       </div>
-      <h1>Revenues</h1>
+      <h1 className="mb-2">Revenues</h1>
       <div className="tiles-grid">
         <div className="tile">
           <h2 className="tile-header">Aujourd'hui</h2>
