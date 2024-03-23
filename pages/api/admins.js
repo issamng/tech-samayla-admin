@@ -8,6 +8,7 @@ export default async function handle(req, res) {
 
   if (req.method === "POST") {
     const { email } = req.body;
+    
     // Handle the case of creating an already existing admin
     if (await Admin.findOne({ email })) {
       res.status(400).json({ message: "Admin déjà existant" });

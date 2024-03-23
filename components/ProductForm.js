@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Spinner from "./Spinner";
@@ -17,7 +17,7 @@ export default function ProductForm({
 }) {
   const [title, setTitle] = useState(currentTitle || "");
   const [description, setDescription] = useState(currentDescription || "");
-  const [category, setCategory] = useState(assignedCategory || ""); //Catégories dans la section produit
+  const [category, setCategory] = useState(assignedCategory || "");
   const [productProperties, setProductProperties] = useState(
     assignedProperties || {}
   );
@@ -27,7 +27,7 @@ export default function ProductForm({
   const [isUploading, setIsUploading] = useState(false);
   const [categories, setCategories] = useState([]);
   const router = useRouter();
-  //Catégories dans la section Produits
+  // Fetch categories in "add new product" page
   useEffect(() => {
     axios
       .get("/api/categories")
@@ -49,11 +49,10 @@ export default function ProductForm({
       properties: productProperties,
     };
     if (_id) {
-      //update
+      // update
       await axios.put("/api/products", { ...data, _id });
     } else {
-      //create
-
+      // create
       await axios.post("/api/products", data);
     }
     setGoToProducts(true);
@@ -63,7 +62,7 @@ export default function ProductForm({
     router.push("/products");
   }
 
-  //Upload photos
+  // Upload photos
   async function uploadImages(ev) {
     const files = ev.target?.files;
     if (files?.length > 0) {
@@ -93,7 +92,7 @@ export default function ProductForm({
     });
   }
 
-  // Trouver les propriétés des parents des catégories
+  // Find categories parent properties
   const propertiesToFill = [];
   if (categories.length > 0 && category) {
     let catInfo = categories.find(({ _id }) => _id === category);
@@ -105,21 +104,28 @@ export default function ProductForm({
       propertiesToFill.push(...parentCat.properties);
       catInfo = parentCat;
     }
-    console.log("catInfo:", catInfo);
+    // console.log("catInfo:", catInfo);
   }
 
   return (
     <form onSubmit={saveProduct}>
       <label>Nom</label>
       <input
+       
         type="text"
         placeholder="Nom"
         value={title}
         onChange={(ev) => setTitle(ev.target.value)}
+        className="border-transparent focus:outline-none"
       />
 
-      <label>Catégorie</label>
-      <select value={category} onChange={(ev) => setCategory(ev.target.value)}>
+      <label >Catégorie</label>
+      <select
+      
+        value={category}
+        onChange={(ev) => setCategory(ev.target.value)}
+        className="outline-none border-transparent"
+      >
         <option value="">Produit non catégorisé</option>
         {categories.length > 0 &&
           categories.map((c) => (
@@ -129,7 +135,7 @@ export default function ProductForm({
           ))}
       </select>
 
-      {/* Trouver les propriétés des parents des catégories  */}
+      {/* Find categories parent properties  */}
       {propertiesToFill.length > 0 &&
         propertiesToFill.map((p) => (
           <div className="">
@@ -140,7 +146,6 @@ export default function ProductForm({
                 onChange={(ev) => setProductProp(p.name, ev.target.value)}
               >
                 {p.values.map((v) => (
-                  
                   <option value={v}>{v}</option>
                 ))}
               </select>
@@ -170,7 +175,7 @@ export default function ProductForm({
             <Spinner />
           </div>
         )}
-        <label className="w-24 h-24 cursor-pointer  text-center flex  items-center justify-center gap-1 text-gray-500 rounded-sm bg-white shadow-sm border border-gray-200">
+        <label className="w-24 h-24 cursor-pointer  text-center flex  items-center justify-center gap-1 text-gray-500 rounded-sm bg-white shadow-sm border border-gray-200  hover:opacity-80">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

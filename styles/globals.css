@@ -9,11 +9,15 @@ img{
 }
 
 input, textarea, select{
-  @apply border-2 border-gray-200 rounded-sm px-1 w-full py-2 px-3;
+  @apply border-2 border-gray-200 rounded-sm px-2 w-full py-2 ;
   @apply mb-2; 
 }
 input:focus, textarea:focus, select:focus{
-  @apply border-blue-900
+  @apply outline-none;
+}
+textarea{
+  resize: none;
+  height:150px;
 }
 
 h1 {
@@ -23,10 +27,10 @@ h2 {
   @apply text-gray-800 mb-2 mt-4;
 }
 label{
-  @apply text-blue-900 text-sm;
+  @apply text-blue-900 text-sm ;
 }
 .btn-primary{
-  @apply bg-blue-700 text-white px-4 py-1 rounded-sm;
+  @apply bg-blue-700 text-white px-4 py-1 rounded-sm  hover:opacity-90;
 }
 table.basic{
   @apply w-full bg-white rounded-md shadow-md;
@@ -37,6 +41,9 @@ table.basic tbody tr {
 table.basic tbody tr:last-child {
   border-bottom: none;  
 }
+table.basic thead th {
+  text-align: left; 
+}
 table.basic thead tr td,
 table.basic thead tr th{
   @apply bg-gray-300 border-b border-gray-300 px-4 py-2;
@@ -44,12 +51,13 @@ table.basic thead tr th{
 table.basic  tr td{
   @apply px-4 py-1;
 }
+
 table.basic a{
   @apply  text-sm  py-1 px-4 items-center inline-flex gap-1 mr-1;
 }
 
 .btn-red, .btn-default{
-  @apply px-4 py-1 rounded-md;
+  @apply px-4 py-1 rounded-md hover:opacity-90;
 }
 
 .btn-red{

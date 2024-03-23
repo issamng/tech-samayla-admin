@@ -237,6 +237,7 @@ function Categories({ swal }) {
                       onClick={() => editCategory(category)}
                       className="btn-default mr-1 mb-1 mt-1"
                     >
+                      
                       Modifier
                     </button>
                     <button

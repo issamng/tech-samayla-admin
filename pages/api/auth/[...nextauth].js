@@ -3,21 +3,17 @@ import { Admin } from "@/models/Admin";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import NextAuth, { getServerSession } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import {mongooseConnect} from '@/lib/mongoose';
-
-
-// const adminEmails = ["razmakus@gmail.com"];
-
+import { mongooseConnect } from "@/lib/mongoose";
 
 //Setting admins from Admins pages
 async function isAdminEmail(email) {
   mongooseConnect();
-  //  return true;
-  return !! (await Admin.findOne({ email }));
+  return !!(await Admin.findOne({ email }));
+  
 }
 
 export const authOptions = {
-  //fix vercel server error: adding secret 
+  //fix vercel server error: adding secret
   secret: process.env.GOOGLE_ID,
   providers: [
     // OAuth authentication providers...
@@ -30,13 +26,11 @@ export const authOptions = {
   ],
   adapter: MongoDBAdapter(clientPromise),
   callbacks: {
-    session: async ({ session, token, user }) => {
+    session: async ({ session }) => {
       if (await isAdminEmail(session?.user?.email)) {
         return session;
       } else {
-        console.log('erreur, vous nest pas admin');
-        // return false; 
-        
+        console.log("erreur, vous n'etes pas admin");
       }
     },
   },

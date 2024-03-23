@@ -16,8 +16,6 @@ export default function Products() {
   }, []);
   return (
     <>
- 
-
       <Layout>
         <Link className="btn-primary" href={"/products/new"}>
           Ajouter un nouveau produit

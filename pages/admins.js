@@ -52,8 +52,6 @@ function AdminsPage({ swal }) {
               });
         }
     } );
-
-  
   }
   // Update the table after adding new admin or deleting one 
   function loadAdmins() {

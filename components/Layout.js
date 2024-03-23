@@ -8,9 +8,14 @@ export default function Layout({ children }) {
 
   const { data: session } = useSession();
 
-  // const closeNav = () => {
-  //   setShowNav(false);
+  // const toggleNav = () => {
+  //   setShowNav(!showNav);
+  
+  //   // Toggle body overflow based on navigation state
+  //   document.body.style.overflow = showNav ? "auto" : "hidden";
   // };
+
+ 
 
   if (!session) {
     return (
@@ -82,9 +87,9 @@ export default function Layout({ children }) {
             </svg>
           )}
         </button>
-        <div className="flex grow justify-center mr-6">
+        <div className="flex grow justify-center mr-6"> 
           <Logo />
-        </div>
+         </div>
       </div>
 
       <div className="flex">

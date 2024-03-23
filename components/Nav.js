@@ -2,12 +2,15 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Logo from "./Logo";
+import { useEffect } from "react";
 
 export default function Nav({ show }) {
-  const inactiveLink = "flex gap-1 p-1";
-  const activeLink = "flex gap-1 p-1 bg-white text-blue-900 rounded-sm";
+  const inactiveLink = "flex gap-1 p-1 hover:text-blue-900";
+  const activeLink = "flex gap-1 p-1 bg-stone-50 text-blue-900 rounded-sm";
   const router = useRouter();
   const { pathname } = router;
+ 
+
   async function logout() {
     await router.push("/");
     await signOut();
@@ -16,9 +19,11 @@ export default function Nav({ show }) {
     <aside
       className={
         (show ? "left-0" : "-left-full") +
-        "  text-gray-500 p-4 fixed w-full bg-gray-200 h-full md:static md:w-auto transition-all"
+        "  text-gray-500 p-4 fixed w-full bg-gray-200 h-full md:static md:w-auto "
       }
     >
+
+      
       <div className="mb-4 mr-4">
         <Logo />
       </div>
@@ -170,6 +175,7 @@ export default function Nav({ show }) {
           </svg>
           Se déconnecter
         </button>
+     
       </nav>
     </aside>
   );
